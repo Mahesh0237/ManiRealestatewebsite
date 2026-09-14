@@ -10,8 +10,8 @@ export default function HomePage() {
   return (
     <>
       <HeroCarousel />
-      <IntroSection />
       <ServicesSection />
+      <IntroSection />
       <StatsSection />
       <WhyChooseUs />
       <ProjectsGallery />
