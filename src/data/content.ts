@@ -131,7 +131,7 @@ export const CORE_VALUES: Value[] = [
 export const CONTACT_INFO: ContactInfo = {
   phone: '+91 81065 25150',
   email: 'mydreamhomesandinteriors@gmail.com',
-  address: '123 Business Avenue, Premium Tower, Suite 500, Mumbai, Maharashtra 400001',
+  address: 'BR Homes 5th floor ramalayam street fathenagar Hyderabad 500018',
   hours: 'Mon - Sat: 9:00 AM - 6:00 PM',
 };
 

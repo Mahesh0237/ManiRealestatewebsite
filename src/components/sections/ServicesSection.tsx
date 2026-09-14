@@ -13,7 +13,7 @@ export default function ServicesSection() {
           description="From finding the perfect property to designing your dream interior, we offer end-to-end services."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           {SERVICES.map((service, index) => (
             <ScrollReveal key={service.id} delay={index * 0.1}>
               <ServiceCard service={service} index={index} />

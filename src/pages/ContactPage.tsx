@@ -15,7 +15,7 @@ export default function ContactPage() {
   ];
 
   const socialLinks = [
-    { icon: FacebookIcon, href: '#', label: 'Facebook' },
+    { icon: FacebookIcon, href: 'https://www.facebook.com/share/19bDhnEQ4o/', label: 'Facebook' },
     { icon: InstagramIcon, href: 'https://www.instagram.com/my_dream_homes_and_interiors', label: 'Instagram' },
     { icon: LinkedInIcon, href: '#', label: 'LinkedIn' },
     { icon: YoutubeIcon, href: '#', label: 'YouTube' },
@@ -110,7 +110,7 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
             <div className="rounded-2xl overflow-hidden shadow-lg border border-[var(--color-neutral-100)]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783946896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(CONTACT_INFO.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

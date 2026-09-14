@@ -24,7 +24,7 @@ export default function HeroCarousel() {
   const slide = HERO_SLIDES[currentSlide];
 
   return (
-    <section className="relative h-screen min-h-[700px] overflow-hidden" id="hero">
+    <section className="relative h-[80vh] min-h-[500px] md:h-screen md:min-h-[700px] overflow-hidden" id="hero">
       {/* Background Images */}
       <AnimatePresence mode="sync">
         <motion.div

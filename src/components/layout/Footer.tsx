@@ -21,7 +21,7 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: FacebookIcon, href: '#', label: 'Facebook' },
+    { icon: FacebookIcon, href: 'https://www.facebook.com/share/19bDhnEQ4o/', label: 'Facebook' },
     { icon: InstagramIcon, href: 'https://www.instagram.com/my_dream_homes_and_interiors', label: 'Instagram' },
     { icon: LinkedInIcon, href: '#', label: 'LinkedIn' },
     { icon: YoutubeIcon, href: '#', label: 'YouTube' },

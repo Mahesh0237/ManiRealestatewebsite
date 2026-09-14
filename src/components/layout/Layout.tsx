@@ -13,7 +13,7 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col w-full overflow-hidden">
       <Header />
       <AnimatePresence mode="wait">
         <motion.main
