@@ -22,6 +22,8 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Full name is required';
@@ -34,10 +36,43 @@ export default function ContactForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      setIsSubmitted(true);
+      setIsSubmitting(true);
+      try {
+        // REPLACE 'YOUR_ACCESS_KEY_HERE' with your actual Web3Forms access key
+        // You can get one for free at https://web3forms.com/
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: "YOUR_ACCESS_KEY_HERE", 
+            name: formData.name,
+            phone: formData.phone,
+            service: formData.service || 'Not specified',
+            subject: `New Lead: ${formData.name} - My Dream Homes`,
+            from_name: "Website Contact Form",
+          }),
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          setIsSubmitted(true);
+        } else {
+          alert("Something went wrong. Please try again.");
+          console.error(result.message);
+        }
+      } catch (error) {
+        alert("Network error. Please try again later.");
+        console.error("Error submitting form", error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -142,9 +177,15 @@ export default function ContactForm() {
           </select>
         </div>
 
-        <Button type="submit" variant="primary" size="lg" icon className="w-full justify-center mt-2">
-          <Send className="w-4 h-4" />
-          Submit Request
+        <Button type="submit" variant="primary" size="lg" icon className="w-full justify-center mt-2" disabled={isSubmitting}>
+          {isSubmitting ? (
+            'Sending...'
+          ) : (
+            <>
+              <Send className="w-4 h-4" />
+              Submit Request
+            </>
+          )}
         </Button>
       </div>
     </form>
