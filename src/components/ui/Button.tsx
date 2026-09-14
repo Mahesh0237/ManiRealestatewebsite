@@ -11,6 +11,7 @@ interface ButtonProps {
   className?: string;
   icon?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -22,6 +23,7 @@ export default function Button({
   className = '',
   icon = false,
   size = 'md',
+  disabled = false,
 }: ButtonProps) {
   const sizeClasses = {
     sm: 'px-5 py-2.5 text-sm',
@@ -36,7 +38,7 @@ export default function Button({
     dark: 'bg-secondary text-white hover:bg-secondary-light transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg',
   };
 
-  const baseClasses = `inline-flex items-center gap-2.5 font-semibold rounded-lg cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  const baseClasses = `inline-flex items-center gap-2.5 font-semibold rounded-lg cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${className} ${disabled ? 'opacity-70 cursor-not-allowed hover:transform-none hover:shadow-none' : ''}`;
 
   const content = (
     <>
@@ -50,20 +52,20 @@ export default function Button({
   if (href) {
     if (href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
       return (
-        <a href={href} className={`${baseClasses} group`} target="_blank" rel="noopener noreferrer">
+        <a href={href} className={`${baseClasses} group ${disabled ? 'pointer-events-none' : ''}`} target="_blank" rel="noopener noreferrer">
           {content}
         </a>
       );
     }
     return (
-      <Link to={href} className={`${baseClasses} group`}>
+      <Link to={href} className={`${baseClasses} group ${disabled ? 'pointer-events-none' : ''}`}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={`${baseClasses} group`}>
+    <button type={type} onClick={onClick} className={`${baseClasses} group`} disabled={disabled}>
       {content}
     </button>
   );
