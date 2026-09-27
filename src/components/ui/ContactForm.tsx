@@ -41,8 +41,6 @@ export default function ContactForm() {
     if (validate()) {
       setIsSubmitting(true);
       try {
-        // REPLACE 'YOUR_ACCESS_KEY_HERE' with your actual Web3Forms access key
-        // You can get one for free at https://web3forms.com/
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
@@ -50,7 +48,7 @@ export default function ContactForm() {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            access_key: "YOUR_ACCESS_KEY_HERE", 
+            access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "7375175f-7543-4c64-a063-52e7f37f088a", 
             name: formData.name,
             phone: formData.phone,
             service: formData.service || 'Not specified',
